@@ -19,11 +19,11 @@ const __dirname = path.dirname(__filename);
 
 
 if (!fs.existsSync(process.cwd()+"/data/channel.db")) {
-  fs["writeFileSync"]("./channel.db", '{"channel": {}}');
+  fs["writeFileSync"](process.cwd()+"/data/channel.db", '{"channel": {}}');
 }
 
 if (!fs.existsSync(process.cwd()+"/data/channel-catchup.db")) {
-  fs["writeFileSync"]("./channel-catchup.db", '{"channel": {}}');
+  fs["writeFileSync"](process.cwd()+"/data/channel-catchup.db", '{"channel": {}}');
 }
 
 app.get("/login.html", (req, res) => {
