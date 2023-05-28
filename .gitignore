@@ -4,3 +4,4 @@ node_modules
 *.db
 *.code-workspace
 # to save bandwith by using cloudflare's bandwith
+.vscode
