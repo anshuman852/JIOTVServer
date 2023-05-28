@@ -5,7 +5,8 @@ FROM node:16
 
 WORKDIR /src
 
-COPY package.json /src/package.json
+COPY ["package.json", "yarn.lock", "./"]
+
 ENV PORT=3500 \
     HOST=0.0.0.0 \
     AUTH_USER=admin \
