@@ -31,7 +31,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/isLogin", (req, res) => {
-  fs["existsSync"]("tokenData.jiotv")
+  fs["existsSync"](process.cwd()+"/data/tokenData.jiotv")
     ? res.status(200)["send"]({ success: !![], result: !![] })
     : res.status(200)["send"]({ success: !![], result: ![] });
 });

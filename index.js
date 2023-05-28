@@ -18,11 +18,11 @@ const __dirname = path.dirname(__filename);
 // import { handler } from "file://D:/projects/JTVServer github/WEB/build/handler.js";
 
 
-if (!fs.existsSync("channel.db")) {
+if (!fs.existsSync(process.cwd()+"/data/channel.db")) {
   fs["writeFileSync"]("./channel.db", '{"channel": {}}');
 }
 
-if (!fs.existsSync("channel-catchup.db")) {
+if (!fs.existsSync(process.cwd()+"/data/channel-catchup.db")) {
   fs["writeFileSync"]("./channel-catchup.db", '{"channel": {}}');
 }
 
@@ -61,7 +61,7 @@ import { handler } from "./build/handler.js";
 
 app.use(handler);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0",() => {
   console.log("===================================================================");
   console.log(chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE."));
   console.log(chalk.green("STRICT ACTION WILL BE TAKEN AGAINST THOSE WHO ARE SELLING THIS."));

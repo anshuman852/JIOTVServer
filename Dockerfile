@@ -1,14 +1,20 @@
-FROM node:16.3.0-alpine
+FROM node:16
 
 # Copy app to /src
-COPY . /src
+
 
 WORKDIR /src
 
-ENV PORT=3500
+COPY package.json /src/package.json
+ENV PORT=3500 \
+    HOST=0.0.0.0 \
+    AUTH_USER=admin \
+    AUTH_PASSWORD=password
 
 EXPOSE ${PORT}
 
-ENTRYPOINT ["sh", "start.sh"]
+RUN yarn global add pm2
 
-CMD ["sh", "start.sh"]
+RUN yarn install
+COPY . /src
+CMD ["node", "index.js"]

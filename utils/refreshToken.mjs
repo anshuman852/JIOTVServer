@@ -18,7 +18,7 @@ var options = {
 export default async function genNewAccessToken() {
   try {
     let userDataJiotv = JSON["parse"](
-      fs["readFileSync"]("tokenData.jiotv", { encoding: "utf8", flag: "r" })
+      fs["readFileSync"](process.cwd()+"/data/tokenData.jiotv", { encoding: "utf8", flag: "r" })
     );
     options["body"] = JSON.stringify({
       appName: "RJIL_JioTV",
@@ -33,7 +33,7 @@ export default async function genNewAccessToken() {
     if (res["authToken"]) {
       userDataJiotv["authToken"] = res.authToken;
       fs["writeFileSync"](
-        "./tokenData.jiotv",
+        process.cwd()+"/data/tokenData.jiotv",
         JSON["stringify"](userDataJiotv)
       );
     } else {
